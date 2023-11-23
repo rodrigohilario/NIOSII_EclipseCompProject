@@ -698,8 +698,10 @@ if __name__ == '__main__':
         print('       please wait...')
 
         try:
-            Repo.clone_from(GIT_FREERTOS_URL,os.getcwd()+SPLM[SPno]+ projectName+SPLM[SPno]+'FreeRTOS-Kernel', 
+            repo = Repo.clone_from(GIT_FREERTOS_URL,os.getcwd()+SPLM[SPno]+ projectName+SPLM[SPno]+'FreeRTOS-Kernel', 
             branch='main', progress=CloneProgress())
+            print('Switching to V10.3.1-kernel-only tag')
+            repo.git.checkout('V10.3.1-kernel-only')
             
         except Exception as ex:
             print('ERROR: The cloning failed! Error Msg.:'+str(ex))
